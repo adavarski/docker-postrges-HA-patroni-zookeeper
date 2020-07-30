@@ -1,4 +1,4 @@
-A basic set-up of PostgreSQL High Available using Patroni with Zookeeper and HAProxy.
+Setup of PostgreSQL High Available using Patroni with Zookeeper and HAProxy.
 
 ## How-to
 Simply start using docker-compose. Initially the zookeeper container will start and than patroni will get
@@ -58,7 +58,7 @@ me=walreceiver sslmode=prefer sslcompression=0 gssencmode=prefer krbsrvname=post
 (1 row)
 
 ```
-Check HAProxy:
+Check HAProxy: screens
 
 Stop/start master
 
@@ -105,7 +105,7 @@ postgres=# select * from pg_stat_wal_receiver;
 postgres=# \q
 root@pg-master:/# exit
 ```
-Check HAproxy:
+Check HAproxy: screens
 
 
 
