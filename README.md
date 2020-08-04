@@ -109,4 +109,17 @@ Check HAproxy:
 
 
 
-
+### Note: Setup of PostgreSQL High Available using Patroni with Zookeeper cluster (3-nodes) and HAProxy 
+```
+# mv postgres postgres.ORIG
+# mv postgres-ha postgres
+# docker-compose -f ./docker-compose.yml.ha up -d
+# docker-compose -f docker-compose.yaml.ha ps
+          Name                        Command               State                          Ports                         
+------------------------------------------------------------------------------------------------------------------------
+postgresqlha_haproxy_1     /docker-entrypoint.sh hapr ...   Up      0.0.0.0:5432->5432/tcp, 0.0.0.0:7000->7000/tcp       
+postgresqlha_pg-master_1   docker-entrypoint.sh su -  ...   Up      0.0.0.0:5433->5432/tcp, 8008/tcp                     
+postgresqlha_pg-slave_1    docker-entrypoint.sh su -  ...   Up      0.0.0.0:5434->5432/tcp, 8008/tcp                     
+zookeeper1                 /etc/confluent/docker/run        Up      0.0.0.0:2181->2181/tcp, 2888/tcp, 3888/tcp           
+zookeeper2                 /etc/confluent/docker/run        Up      2181/tcp, 0.0.0.0:2182->2182/tcp, 2888/tcp, 3888/tcp 
+zookeeper3                 /etc/confluent/docker/run        Up      2181/tcp, 0.0.0.0:2183->2183/tcp, 2888/tcp, 3888/tcp 
